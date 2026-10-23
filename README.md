@@ -29,4 +29,4 @@ CLAUDE.md     Claude Code で書くときの規約
 
 GitHub リポジトリ命名規約（lowercase kebab-case、`^(lab|tool|post|ref)-[a-z0-9]+(-[a-z0-9]+)*$`）に従い、
 `lab-`（検証・実験）を付与。ローカルは `~/dev/lab/` 配下。
-GitHub に置く場合は非公開。topics: `research-notes` `knowledge-base` `machine-learning` `literature-review`
+GitHub では公開（[spin-glass/lab-research-notes](https://github.com/spin-glass/lab-research-notes)）。公開前提のため、案件固有の情報と秘密情報は書かない（CLAUDE.md の絶対制約）。topics: `research-notes` `knowledge-base` `machine-learning` `literature-review`
