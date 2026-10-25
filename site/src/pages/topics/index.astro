@@ -1,0 +1,12 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getNotes, notesByTopic } from '../../lib/notes';
+
+const byTopic = notesByTopic(await getNotes());
+---
+<Base title="トピック">
+  <h1>トピック</h1>
+  <p>
+    {byTopic.map(([topic, list]) => <a class="tag" href={`/topics/${topic}/`}>{topic}（{list.length}）</a>)}
+  </p>
+</Base>

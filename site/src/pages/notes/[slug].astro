@@ -1,0 +1,40 @@
+---
+import { render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import FeedbackForm from '../../components/FeedbackForm.astro';
+import { formatDate, getNotes, supersededHref, type Note } from '../../lib/notes';
+
+export async function getStaticPaths() {
+  return (await getNotes()).map((note) => ({ params: { slug: note.id }, props: { note } }));
+}
+
+const { note } = Astro.props as { note: Note };
+const { title, date, topics, status, question, superseded_by } = note.data;
+const { Content } = await render(note);
+---
+<Base title={title} description={question}>
+  <article>
+    <h1>{title}</h1>
+    <p class="muted">
+      {formatDate(date)}
+      {status !== 'active' && <>・{status}</>}
+    </p>
+    <p>{topics.map((t) => <a class="tag" href={`/topics/${t}/`}>{t}</a>)}</p>
+    {status === 'superseded' && (
+      <p class="superseded">
+        このノートは更新されています。
+        {superseded_by ? <a href={supersededHref(superseded_by)}>後継のノートを読む</a> : '後継のノートは未指定です。'}
+      </p>
+    )}
+    <p class="question"><strong>問い：</strong>{question}</p>
+    <div class="prose">
+      <Content />
+    </div>
+  </article>
+  <FeedbackForm slug={note.id} />
+</Base>
+
+<style>
+  .superseded { background: var(--warn-bg); border-left: 4px solid var(--warn-line); padding: 0.5rem 0.75rem; }
+  .question { border-left: 4px solid var(--line); padding-left: 0.75rem; }
+</style>
