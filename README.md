@@ -1,7 +1,7 @@
 # lab-research-notes
 
 調査の知見を残すためだけのリポジトリ。対象は多岐にわたる（ML・MLOps・ラベリング・開発環境・セキュリティ・運用…）。
-コードは置かない。置くのは「調べて分かったこと」と「その根拠」だけ。
+置くのは「調べて分かったこと」と「その根拠」。コードはノートを配信する `site/` と索引用の `scripts/` だけ。
 
 ## 何を書くか
 
@@ -14,10 +14,15 @@
 ```
 notes/        ノート本体（フラット。分類は frontmatter の topics）
 templates/    ノートの雛形
+site/         notes/ を配信する Astro サイトとフィードバック API（Vercel）
 scripts/      INDEX.md の生成とチェック（標準ライブラリのみ）
 INDEX.md      自動生成の索引（topic 別・日付順）。手で編集しない
 CLAUDE.md     Claude Code で書くときの規約
 ```
+
+## site/
+
+`site/` は `notes/*.md` をそのまま読み込んで https://notes.spin-glass.dev に静的サイトとして配信する Astro プロジェクト（Vercel、Root Directory は `site`）。ノートの正本は `notes/` のままで、`site/` には複製しない。各ノートの末尾にはフィードバック用のフォームがあり、`/api/feedback`（このエンドポイントだけサーバー側で動く）が Turnstile で確認したうえで、非公開の受信箱リポジトリに Issue を作る。frontmatter の `record`（非公開の Notion へのリンク）はサイトに表示しない。手元では `cd site && npm ci && npm run build`、API のテストは `npm test`。依存は `site/package.json` で完結し、リポジトリ直下には Node の設定を置かない。
 
 ## ノートを足す
 
