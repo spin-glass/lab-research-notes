@@ -1,0 +1,17 @@
+---
+import Base from '../../layouts/Base.astro';
+import NoteList from '../../components/NoteList.astro';
+import { getNotes, notesByTopic, type Note } from '../../lib/notes';
+
+export async function getStaticPaths() {
+  return notesByTopic(await getNotes()).map(([topic, notes]) => ({ params: { topic }, props: { notes } }));
+}
+
+const { topic } = Astro.params;
+const { notes } = Astro.props as { notes: Note[] };
+---
+<Base title={`topic: ${topic}`}>
+  <h1>topic: {topic}（{notes.length}）</h1>
+  <NoteList notes={notes} showTopics />
+  <p><a href="/topics/">トピック一覧へ</a></p>
+</Base>

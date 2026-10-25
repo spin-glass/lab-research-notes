@@ -1,0 +1,24 @@
+---
+import Base from '../layouts/Base.astro';
+import NoteList from '../components/NoteList.astro';
+import { getNotes, notesByTopic } from '../lib/notes';
+
+// INDEX.md（scripts/build_index.py）と同じく topic 別・日付順の2段構成
+const notes = await getNotes();
+const byTopic = notesByTopic(notes);
+---
+<Base description="調査で分かったこと（手法・根拠・適用条件・判断基準）のノート">
+  <h1>調査ノート</h1>
+  <p class="muted">調査で分かったこと（手法・根拠・適用条件・判断基準）を一般化して残したノート。{notes.length} 件。</p>
+
+  <h2>topic 別</h2>
+  {byTopic.map(([topic, list]) => (
+    <section>
+      <h3 id={`topic-${topic}`}><a href={`/topics/${topic}/`}>{topic}</a>（{list.length}）</h3>
+      <NoteList notes={list} />
+    </section>
+  ))}
+
+  <h2>日付順</h2>
+  <NoteList notes={notes} showTopics />
+</Base>
