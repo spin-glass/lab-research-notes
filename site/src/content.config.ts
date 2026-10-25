@@ -1,14 +1,15 @@
 import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
+import { NOTES_BASE, NOTES_PATTERN, noteSlug } from '../notes-source.mjs';
 
 // 正本は リポジトリ直下の notes/。複製せず glob loader で直接読む。
 // id はファイル名から .md を除いたもの（= ノートの slug）。
 const notes = defineCollection({
   loader: glob({
-    pattern: ['*.md', '!_*', '!README*'],
-    base: '../notes',
-    generateId: ({ entry }) => entry.replace(/\.md$/, ''),
+    pattern: NOTES_PATTERN,
+    base: NOTES_BASE,
+    generateId: ({ entry }) => noteSlug(entry),
   }),
   schema: z.object({
     title: z.string(),

@@ -1,4 +1,5 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
+import noteSlugs from 'virtual:note-slugs';
 
 export type Note = CollectionEntry<'notes'>;
 
@@ -8,6 +9,11 @@ export function formatDate(d: Date): string {
 
 export async function getNotes(): Promise<Note[]> {
   const notes = await getCollection('notes');
+  // /api/feedback が受け付ける slug 一覧（virtual:note-slugs）と collection の id がずれていたらビルドを止める
+  const ids = notes.map((n) => n.id).sort();
+  if (JSON.stringify(ids) !== JSON.stringify(noteSlugs)) {
+    throw new Error(`notes の slug 一覧が collection と一致しない: ${JSON.stringify({ ids, noteSlugs })}`);
+  }
   return notes.sort((a, b) => b.data.date.getTime() - a.data.date.getTime() || a.id.localeCompare(b.id));
 }
 
