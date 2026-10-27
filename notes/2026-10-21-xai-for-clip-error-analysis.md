@@ -8,7 +8,6 @@ sources:
   - https://proceedings.neurips.cc/paper_files/paper/2024/hash/996bef37d8a638f37bdfcac2789e835d-Abstract.html
   - https://iclr.cc/virtual/2022/oral/6149
   - https://research.google/pubs/sanity-checks-for-saliency-maps/
-record: https://app.notion.com/p/400600398c0381f2ae98fac081358b45
 ---
 
 ## 結論
