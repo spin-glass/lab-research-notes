@@ -9,7 +9,6 @@ sources:
   - https://arxiv.org/abs/2509.08825
   - https://arxiv.org/abs/2306.04746
   - https://aclanthology.org/2023.emnlp-main.278
-record: https://app.notion.com/p/3fe600398c0381e38c9ac0a248333bd7
 ---
 
 ## 結論
