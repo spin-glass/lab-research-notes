@@ -8,7 +8,6 @@ sources:
   - https://arxiv.org/abs/1711.10160
   - https://dspace.mit.edu/entities/publication/39b0f8e0-b673-42c6-99f6-0af829bef7f5
   - https://aclanthology.org/2022.emnlp-main.731
-record: https://app.notion.com/p/400600398c0381dcb334fdfa1f68508f
 ---
 
 ## 結論
