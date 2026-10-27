@@ -6,7 +6,7 @@ status: active
 question: 大型 VLM（PaliGemma・Gemma 系）は CLIP＋線形ヘッドの分類器を置き換えられるか
 sources:
   - https://arxiv.org/abs/2405.18415
-record: https://app.notion.com/p/400600398c0381d2b286ff03331e7985
+  - https://huggingface.co/google/gemma-4-31B
 ---
 
 ## 結論
@@ -18,7 +18,8 @@ record: https://app.notion.com/p/400600398c0381d2b286ff03331e7985
 ## 根拠
 
 - Why are Visually-Grounded Language Models Bad at Image Classification?（NeurIPS 2024）：VLM の分類性能は CLIP に劣り、原因は主に学習データ。分類データで学習させると差が縮む。
-- Gemma 4 の画像トークン予算は 70〜1120 から選択でき、公式は低予算を分類向き、高予算を OCR 向きとしている（詳細は record のページ）。
+- Gemma 4 の画像トークン予算は 70・140・280・560・1120 から選べ、Google のモデルカードは低予算を分類・キャプション・動画向き、高予算を OCR・文書の読み取り向きとしている。ライセンスは Apache 2.0、140言語超で事前学習。
+- Gemma 4 は Vertex AI Model Garden から自前のエンドポイントへ配備できる（Google の開発者フォーラムの手順記事、2026-04-02）。
 
 ## 適用条件
 
@@ -32,3 +33,6 @@ record: https://app.notion.com/p/400600398c0381d2b286ff03331e7985
 ## 出典
 
 - Why are Visually-Grounded Language Models Bad at Image Classification?: https://arxiv.org/abs/2405.18415
+- Gemma 4 のモデルカード（Google、Hugging Face）: https://huggingface.co/google/gemma-4-31B
+- Gemma 4 の画像の扱い（Google 公式）: https://ai.google.dev/gemma/docs/capabilities/vision
+- End-to-end guide: Fine-tuning and serving Gemma 4 on Vertex AI: https://discuss.google.dev/t/end-to-end-guide-fine-tuning-and-serving-gemma-4-on-vertex-ai/345865
