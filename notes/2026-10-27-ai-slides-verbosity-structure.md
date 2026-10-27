@@ -8,7 +8,6 @@ sources:
   - https://arxiv.org/abs/2310.03716
   - https://arxiv.org/abs/2411.07858
   - https://github.com/spin-glass/tool-slides/blob/main/experiments/2026-09-30-model-vs-skill/README.md
-record: https://app.notion.com/p/3e6600398c038173abdcef9a34be981f
 ---
 
 ## 結論
