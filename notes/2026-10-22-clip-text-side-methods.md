@@ -8,7 +8,6 @@ sources:
   - https://cvpr2023.thecvf.com/virtual/2023/poster/21016
   - https://openaccess.thecvf.com/content/CVPR2022/html/Wortsman_Robust_Fine-Tuning_of_Zero-Shot_Models_CVPR_2022_paper.html
   - https://proceedings.neurips.cc/paper_files/paper/2023/hash/123a18dfd821c8b440f42a00a27648d6-Abstract.html
-record: https://app.notion.com/p/3fe600398c0381269eb1e9a090bb0ff4
 ---
 
 ## 結論
