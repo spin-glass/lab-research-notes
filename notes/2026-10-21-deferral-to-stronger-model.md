@@ -8,7 +8,6 @@ sources:
   - https://neurips.cc/virtual/2023/poster/72864
   - https://deepmind.google/blog/codoc-developing-reliable-ai-tools-for-healthcare/
   - https://lmsys.org/blog/2024-07-01-routellm/
-record: https://app.notion.com/p/400600398c03812dae70f255586d8543
 ---
 
 ## 結論
