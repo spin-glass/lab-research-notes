@@ -18,8 +18,6 @@ const notes = defineCollection({
     status: z.enum(['active', 'superseded', 'archived']),
     question: z.string(),
     sources: z.array(z.string()).optional(),
-    // 本人の非公開 Notion へのリンク。受け入れるがサイトには出さない
-    record: z.string().nullish(),
     superseded_by: z.string().nullish(),
   }),
 });

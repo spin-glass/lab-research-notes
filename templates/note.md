@@ -5,7 +5,6 @@ topics: []
 status: active
 question: 
 sources: []
-record: 
 ---
 
 ## 結論

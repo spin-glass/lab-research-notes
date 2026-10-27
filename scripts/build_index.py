@@ -14,6 +14,8 @@ STATUSES = {"active", "superseded", "archived"}
 FNAME_RE = re.compile(r"^(\d{4}-\d{2}-\d{2})-[a-z0-9]+(?:-[a-z0-9]+)*\.md$")
 KEY_RE = re.compile(r"^([A-Za-z_][A-Za-z0-9_-]*):\s*(.*)$")
 ITEM_RE = re.compile(r"^\s*-\s+(.*)$")
+# ノートは公開される。非公開の Notion のワークスペースへのリンクは置かない（公開サイトの notion.site は対象外）
+PRIVATE_LINK_RE = re.compile(r"https?://(?:www\.)?(?:app\.notion\.com|notion\.so)/\S*", re.I)
 
 
 def _unquote(s: str) -> str:
@@ -66,13 +68,19 @@ def load_notes() -> tuple[list[dict], list[str]]:
         if not m:
             errors.append(f"{rel}: ファイル名は YYYY-MM-DD-<kebab-slug>.md にする")
             continue
-        fm = parse_frontmatter(path.read_text(encoding="utf-8"))
+        text = path.read_text(encoding="utf-8")
+        fm = parse_frontmatter(text)
         if fm is None:
             errors.append(f"{rel}: frontmatter（--- ... ---）がない")
             continue
         for k in REQUIRED:
             if not fm.get(k):
                 errors.append(f"{rel}: frontmatter に {k} がない")
+        if "record" in fm:
+            errors.append(f"{rel}: record は置かない（ノートは公開。非公開の資料にリンクしない）")
+        link = PRIVATE_LINK_RE.search(text)
+        if link:
+            errors.append(f"{rel}: 非公開の Notion へのリンクがある（{link.group(0)}）。公開の出典に置き換える")
         if not isinstance(fm.get("topics"), list):
             errors.append(f"{rel}: topics はリスト（[a, b]）にする")
         if fm.get("status") and fm["status"] not in STATUSES:

@@ -7,7 +7,8 @@
 
 - 1調査 = 1ノート（`notes/YYYY-MM-DD-<slug>.md`）
 - 書くのは手法・根拠・適用条件・判断基準。あとで調べ直さなくて済む粒度
-- 書かないのは案件固有の数値・固有名詞・データ。それらは Notion 記録DB に置き、ノートからは `record:` でリンクだけ張る
+- 書かないのは案件固有の数値・固有名詞・データ
+- ノートは公開される。非公開の資料（Notion など）へのリンクも、「詳細は記録に」のような参照も置かない。根拠は公開されている出典だけで示す
 
 ## 構成
 
@@ -22,7 +23,7 @@ CLAUDE.md     Claude Code で書くときの規約
 
 ## site/
 
-`site/` は `notes/*.md` をそのまま読み込んで https://notes.spin-glass.dev に静的サイトとして配信する Astro プロジェクト（Vercel、Root Directory は `site`）。ノートの正本は `notes/` のままで、`site/` には複製しない。各ノートの末尾にはフィードバック用のフォームがあり、`/api/feedback`（このエンドポイントだけサーバー側で動く）が Turnstile で確認したうえで、非公開の受信箱リポジトリに Issue を作る。frontmatter の `record`（非公開の Notion へのリンク）はサイトに表示しない。手元では `cd site && npm ci && npm run build`。`npm test` はビルドしてから、API のモックテストと、出力された Vercel Function の起動・応答（503・404）・同梱物を確かめる。依存は `site/package.json` で完結し、リポジトリ直下には Node の設定を置かない。
+`site/` は `notes/*.md` をそのまま読み込んで https://notes.spin-glass.dev に静的サイトとして配信する Astro プロジェクト（Vercel、Root Directory は `site`）。ノートの正本は `notes/` のままで、`site/` には複製しない。各ノートの末尾にはフィードバック用のフォームがあり、`/api/feedback`（このエンドポイントだけサーバー側で動く）が Turnstile で確認したうえで、非公開の受信箱リポジトリに Issue を作る。手元では `cd site && npm ci && npm run build`。`npm test` はビルドしてから、API のモックテストと、出力された Vercel Function の起動・応答（503・404）・同梱物を確かめる。依存は `site/package.json` で完結し、リポジトリ直下には Node の設定を置かない。
 
 ## ノートを足す
 
