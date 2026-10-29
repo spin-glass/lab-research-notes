@@ -1,6 +1,6 @@
 # INDEX
 
-自動生成（`python3 scripts/build_index.py`）。手で編集しない。ノート 9 件。
+自動生成（`python3 scripts/build_index.py`）。手で編集しない。ノート 10 件。
 
 ## topic 別
 
@@ -43,9 +43,10 @@
 - 2026-10-21 — [AIラベリングで修正をループに組み込む設計](notes/2026-10-21-ai-labeling-revision-loop.md) — ラベルをある時点で固定せず、曖昧画像・基準変更・誤り修正を繰り返す前提で、何をどう記録し学習・評価するか
 - 2026-10-21 — [VLMを分類器の置き換えに使わない理由と使いどころ](notes/2026-10-21-vlm-as-classifier-vs-labeler.md) — 大型 VLM（PaliGemma・Gemma 系）は CLIP＋線形ヘッドの分類器を置き換えられるか
 
-### llm（5）
+### llm（6）
 
 - 2026-10-29 — [少数の人ラベルでAIラベルの推定を補正するPPI・DSL・CDI](notes/2026-10-29-ppi-dsl-cdi-corrected-inference.md) — LLM/VLM が全件に付けたラベルから精度や比率などの数字を出すとき、少数の人ラベルで推定の偏りを取り除き、妥当な信頼区間を得る方法（PPI・DSL・CDI）はどう働き、何を前提にし、どれを使うか
+- 2026-10-29 — [中国製オープンウェイトLLM（Qwen）の業務利用リスクと企業の対応](notes/2026-10-29-qwen-business-use-risks.md) — Alibaba の Qwen のような中国製 LLM を業務で使うとき、どんなリスクがあり、企業はどう対応しているか
 - 2026-10-27 — [AIで作るスライドの冗長さは指示でなく仕組みで抑える](notes/2026-10-27-ai-slides-verbosity-structure.md) — LLM に作らせたスライドが冗長・枚数過多・読み手不在になるのはなぜか。指示・モデル・仕組みのどれで防げるか
 - 2026-10-27 — [曖昧な画像のラベルの持ち方とAIラベルの監査](notes/2026-10-27-ambiguous-labels-ai-audit.md) — 複数のクラスが当てはまる画像や判定できない画像のラベルをどう持つか。LLM/VLM でラベルを付けて人手を最小にするとき、人は何を見て、評価の数字をどう出すか
 - 2026-10-21 — [AIラベリングで修正をループに組み込む設計](notes/2026-10-21-ai-labeling-revision-loop.md) — ラベルをある時点で固定せず、曖昧画像・基準変更・誤り修正を繰り返す前提で、何をどう記録し学習・評価するか
@@ -66,8 +67,9 @@
 
 - 2026-10-22 — [CLIPのテキスト側を使う精度改善手法の地図](notes/2026-10-22-clip-text-side-methods.md) — 画像側の埋め込み＋線形ヘッドで運用している CLIP 分類器に、テキストエンコーダをどう使えば精度が上がるか
 
-### security（1）
+### security（2）
 
+- 2026-10-29 — [中国製オープンウェイトLLM（Qwen）の業務利用リスクと企業の対応](notes/2026-10-29-qwen-business-use-risks.md) — Alibaba の Qwen のような中国製 LLM を業務で使うとき、どんなリスクがあり、企業はどう対応しているか
 - 2026-10-27 — [LLMセキュリティの分類とCLIP画像分類器への当てはめ](notes/2026-10-27-llm-security-risks-for-clip-classifier.md) — OWASP LLM Top 10 2026 などで分類されるセキュリティ問題のうち、CLIP＋線形ヘッドの画像分類器（VLM をラベラー・難例の委譲先に使う構成）に関係するものはどれか
 
 ### vision（5）
@@ -98,6 +100,7 @@
 ## 日付順
 
 - 2026-10-29 — [少数の人ラベルでAIラベルの推定を補正するPPI・DSL・CDI](notes/2026-10-29-ppi-dsl-cdi-corrected-inference.md) — LLM/VLM が全件に付けたラベルから精度や比率などの数字を出すとき、少数の人ラベルで推定の偏りを取り除き、妥当な信頼区間を得る方法（PPI・DSL・CDI）はどう働き、何を前提にし、どれを使うか — topics: ml, labeling, evaluation, llm, human-in-the-loop
+- 2026-10-29 — [中国製オープンウェイトLLM（Qwen）の業務利用リスクと企業の対応](notes/2026-10-29-qwen-business-use-risks.md) — Alibaba の Qwen のような中国製 LLM を業務で使うとき、どんなリスクがあり、企業はどう対応しているか — topics: llm, security
 - 2026-10-27 — [AIで作るスライドの冗長さは指示でなく仕組みで抑える](notes/2026-10-27-ai-slides-verbosity-structure.md) — LLM に作らせたスライドが冗長・枚数過多・読み手不在になるのはなぜか。指示・モデル・仕組みのどれで防げるか — topics: llm, writing, evaluation
 - 2026-10-27 — [曖昧な画像のラベルの持ち方とAIラベルの監査](notes/2026-10-27-ambiguous-labels-ai-audit.md) — 複数のクラスが当てはまる画像や判定できない画像のラベルをどう持つか。LLM/VLM でラベルを付けて人手を最小にするとき、人は何を見て、評価の数字をどう出すか — topics: ml, vision, labeling, evaluation, llm, human-in-the-loop
 - 2026-10-27 — [LLMセキュリティの分類とCLIP画像分類器への当てはめ](notes/2026-10-27-llm-security-risks-for-clip-classifier.md) — OWASP LLM Top 10 2026 などで分類されるセキュリティ問題のうち、CLIP＋線形ヘッドの画像分類器（VLM をラベラー・難例の委譲先に使う構成）に関係するものはどれか — topics: security, ml, vision, clip, vlm, classification, labeling
