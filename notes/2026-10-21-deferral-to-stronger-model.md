@@ -46,6 +46,13 @@ sources:
 - 正例（上位が救える誤り）が少ないときに学習できる信号があるかは、データごとに試すしかない。
 - LLM router の数値は対話品質のベンチマーク。画像分類とは評価軸が違う。
 
+## 追記 2026-11-10
+
+上位に VLM を置く場合の続きを足す。結論は変えない。
+
+- VLM はゼロショットでは画像分類で CLIP より大幅に悪いが、分類のラベルで微調整すると差がほぼ消える（NeurIPS 2024 の発表スライド。ImageNet で微調整した LLaVA-7B 85.7、CLIP 85.2）。上位に置く VLM は、ゼロショットのままか、下位と同じ学習ラベルで微調整してからかで、当たる確率が変わる。
+- 残る誤りが「高信頼の誤り」で、その多くがクラスの境目の決まっていない画像なら、委譲器や上位モデルを強くする前に、境目の定義と学習例を足す。切り分けの数字と進め方は 2026-11-10「精度が頭打ちの画像分類器の切り分けと線引き台帳」。
+
 ## 出典
 
 - GPT-5 System Card — OpenAI: https://openai.com/index/gpt-5-system-card
@@ -60,3 +67,4 @@ sources:
 - When Does Confidence-Based Cascade Deferral Suffice?（NeurIPS 2023）: https://neurips.cc/virtual/2023/poster/72864
 - Agreement-Based Cascading: https://arxiv.org/pdf/2407.02348
 - Learning to Defer（ICML 2020）: https://icml.cc/virtual/2020/poster/6448
+- Why are Visually-Grounded Language Models Bad at Image Classification?（NeurIPS 2024 の発表スライド）: https://neurips.cc/media/neurips-2024/Slides/95478_3aJ1zO8.pdf
